@@ -146,7 +146,7 @@ function App() {
       funding: "23,000",
       description: "A co-founder and lead developer to create an innovative AI startup, where you'll develop(MVP) and own 20% of the company.",
       deadline: "March 4, 2025",
-      imageUrl: "https://cdn.prod.website-files.com/623eb8c6eb9b328644ade032/66fd8967b077287c549784f9_RebuidChartable-bg%20(1).png"
+      imageUrl: "https://cdn.prod.website-files.com/623eb8c6eb9b328644ade032/670edb224a6fd5c2a4360b54_Your_paragraph_text-removebg-preview%20(1).png"
     },
     {
       title: "Partner Loyalty Checker",
