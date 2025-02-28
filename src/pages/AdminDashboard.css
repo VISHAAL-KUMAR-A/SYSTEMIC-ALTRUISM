@@ -1,0 +1,321 @@
+/* Reset for admin dashboard */
+.admin-dashboard,
+.admin-dashboard * {
+  box-sizing: border-box;
+}
+
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #000000 !important;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Override any inherited background colors */
+.admin-dashboard,
+.admin-dashboard .admin-sidebar,
+.admin-dashboard .admin-content,
+.admin-dashboard .challenges-management,
+.admin-dashboard .challenges-table-container,
+.admin-dashboard .loading,
+.admin-dashboard .error,
+.admin-dashboard .section-not-available,
+.admin-dashboard .challenges-table tbody tr {
+  background-color: #000000 !important;
+}
+
+.admin-dashboard .admin-sidebar {
+  width: 250px;
+  border-right: 1px solid #333;
+  padding: 20px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-dashboard .admin-logo {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.admin-dashboard .admin-logo h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.admin-dashboard .admin-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
+.admin-dashboard .admin-nav li {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #cccccc;
+}
+
+.admin-dashboard .admin-nav li:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.admin-dashboard .admin-nav li.active {
+  background-color: #111111;
+  color: #4a4a82;
+  font-weight: 600;
+  border-left: 3px solid #4a4a82;
+}
+
+.admin-dashboard .admin-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.admin-dashboard .challenges-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-dashboard .challenges-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+.admin-dashboard .add-challenge-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.admin-dashboard .add-challenge-btn:hover {
+  background-color: #45a049;
+}
+
+.admin-dashboard .challenges-table-container {
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.admin-dashboard .challenges-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-dashboard .challenges-table th {
+  background-color: #111111 !important;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #ffffff;
+  border-bottom: 1px solid #333;
+}
+
+.admin-dashboard .challenges-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #333;
+  color: #cccccc;
+}
+
+.admin-dashboard .description-cell {
+  max-width: 300px;
+}
+
+.admin-dashboard .visibility-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.admin-dashboard .visibility-label {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* Switch styling */
+.admin-dashboard .switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.admin-dashboard .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.admin-dashboard .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #555;
+  transition: .3s;
+}
+
+.admin-dashboard .slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+}
+
+.admin-dashboard input:checked + .slider {
+  background-color: #4a4a82;
+}
+
+.admin-dashboard input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.admin-dashboard .slider.round {
+  border-radius: 24px;
+}
+
+.admin-dashboard .slider.round:before {
+  border-radius: 50%;
+}
+
+.admin-dashboard .loading, 
+.admin-dashboard .error {
+  padding: 40px;
+  text-align: center;
+  border: 1px solid #333;
+  color: #ffffff;
+}
+
+.admin-dashboard .error {
+  color: #ff6b6b;
+}
+
+.admin-dashboard .retry-btn {
+  background-color: #4a4a82;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.admin-dashboard .section-not-available {
+  padding: 40px;
+  text-align: center;
+  color: #cccccc;
+  border: 1px solid #333;
+}
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #ffffff;
+}
+
+/* Add Challenge Form - Updated with black background and white text */
+.add-challenge-form {
+  background-color: #000000;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  color: #ffffff;
+}
+
+.add-challenge-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #222222;
+  color: #ffffff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.form-group.checkbox input {
+  width: auto;
+  margin-right: 10px;
+  background-color: #222222;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+} 
