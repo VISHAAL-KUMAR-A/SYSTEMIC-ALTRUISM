@@ -335,6 +335,109 @@ function App() {
     };
   }, []);
   
+  useEffect(() => {
+    // Create container for touch effects
+    const touchContainer = document.createElement('div');
+    touchContainer.className = 'touch-effect-container';
+    document.body.insertBefore(touchContainer, document.body.firstChild);
+
+    // Handle touch/click events
+    const handleInteraction = (e) => {
+      // Only trigger if touching/clicking the background
+      if (e.target === document.body || e.target === touchContainer) {
+        // Get coordinates
+        const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+        // Create pulse effect
+        const pulse = document.createElement('div');
+        pulse.className = 'touch-pulse';
+        pulse.style.left = `${x}px`;
+        pulse.style.top = `${y}px`;
+        touchContainer.appendChild(pulse);
+
+        // Create glow effect
+        const glow = document.createElement('div');
+        glow.className = 'touch-glow';
+        glow.style.setProperty('--x', x + 'px');
+        glow.style.setProperty('--y', y + 'px');
+        touchContainer.appendChild(glow);
+
+        // Remove elements after animation
+        setTimeout(() => {
+          pulse.remove();
+          glow.remove();
+        }, 3000);
+      }
+    };
+
+    // Add event listeners for both touch and click
+    document.body.addEventListener('touchstart', handleInteraction);
+    document.body.addEventListener('click', handleInteraction);
+
+    // Cleanup
+    return () => {
+      document.body.removeEventListener('touchstart', handleInteraction);
+      document.body.removeEventListener('click', handleInteraction);
+      touchContainer.remove();
+    };
+  }, []);
+  
+  useEffect(() => {
+    const twitterContainer = document.querySelector('.twitter-embed-container');
+    
+    const createParticleEffect = () => {
+      const particles = [];
+      const particleCount = 3;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'twitter-particle';
+        twitterContainer.appendChild(particle);
+        particles.push(particle);
+        
+        animateParticle(particle);
+      }
+      
+      return () => {
+        particles.forEach(p => p.remove());
+      };
+    };
+    
+    const animateParticle = (particle) => {
+      const duration = 2000 + Math.random() * 1000;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      
+      particle.style.cssText = `
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(76, 175, 80, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        left: ${x}%;
+        top: ${y}%;
+        filter: blur(2px);
+        opacity: 0;
+        transition: all ${duration}ms ease;
+      `;
+      
+      requestAnimationFrame(() => {
+        particle.style.opacity = '1';
+        particle.style.transform = `translate(${Math.random() * 50 - 25}px, ${Math.random() * 50 - 25}px)`;
+      });
+      
+      setTimeout(() => {
+        particle.style.opacity = '0';
+        setTimeout(() => animateParticle(particle), 100);
+      }, duration);
+    };
+    
+    const cleanup = createParticleEffect();
+    return cleanup;
+  }, []);
+  
   return (
     <div className="app">
       <nav className="navbar" ref={navbarRef}>
@@ -464,19 +567,12 @@ function App() {
         
         <div className="challenges-grid">
           {items.map((item, index) => (
-            <div key={index} className="challenge-box" style={{ 
-              border: '1px solid #e0e0e0', 
-              borderRadius: '8px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-            }}>
-              <div className="challenge-header">
-                <img 
-                  src={item.imageUrl} 
-                  loading="lazy" 
-                  alt={item.title} 
-                  className="challenge-logo" 
-                />
-                <h3 className="challenge-title">{item.title}</h3>
+            <div key={index} className="challenge-box">
+              <div className="challenge-image-container">
+                <img src={item.imageUrl} alt={item.title} />
+                <div className="challenge-image-back">
+                  Click to view challenge details
+                </div>
               </div>
               <div className="funding-info">
                 <span>Initial Funding Offered: </span>

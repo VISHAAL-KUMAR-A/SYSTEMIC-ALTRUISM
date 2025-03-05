@@ -103,21 +103,80 @@
     }
 }
 
+/* Hero Image Advanced Animation */
 .hero-image {
-  width: 100%;
   position: relative;
-  max-width: 100%;
-  height: 290px;
-  margin: 10px auto 0;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 20px;
-  text-align: center;
-  object-fit: cover;
-  filter: grayscale(100%);
-  overflow-clip-margin: content-box;
-  overflow: clip;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  width: 100%;
+background: linear-gradient(
+  to bottom,
+  rgba(0, 0, 0, 0.8) 30%,
+  rgba(255, 255, 255, 0.2) 100%
+);
 }
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 0%,
+    rgba(76, 175, 80, 0.2) 30%,
+    rgba(76, 175, 80, 0.3) 50%,
+    rgba(76, 175, 80, 0.2) 70%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: heroGlow 3s ease infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(76, 175, 80, 0.4) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-image:hover::after {
+  opacity: 1;
+}
+
+@keyframes heroGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Add this JavaScript to App.jsx for hero image mouse tracking
+useEffect(() => {
+  const heroImage = document.querySelector('.hero-image');
+  
+  const updateMousePosition = (e) => {
+    const rect = heroImage.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    heroImage.style.setProperty('--mouse-x', `${x}%`);
+    heroImage.style.setProperty('--mouse-y', `${y}%`);
+  };
+
+  heroImage.addEventListener('mousemove', updateMousePosition);
+  return () => heroImage.removeEventListener('mousemove', updateMousePosition);
+}, []); */
 
 .app {
   width: 100%;
@@ -206,6 +265,7 @@
 
 .content-section {
   transition: opacity 0.3s ease;
+  /* margin-top: 400px; */
 }
 
 .content-section.overlapped {
@@ -371,49 +431,28 @@
 }
 
 .rewards-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-  width: 90%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.reward-item {
-  perspective: 1000px;
-  animation: float 3s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.2s);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: appear 0.6s forwards;
-  animation-delay: calc(var(--i, 0) * 0.1s + 0.3s);
-}
-
-.reward-item:nth-child(1) { --i: 0; }
-.reward-item:nth-child(2) { --i: 1; }
-.reward-item:nth-child(3) { --i: 2; }
-.reward-item:nth-child(4) { --i: 3; }
-.reward-item:nth-child(5) { --i: 4; }
-.reward-item:nth-child(6) { --i: 5; }
-.reward-item:nth-child(7) { --i: 6; }
-.reward-item:nth-child(8) { --i: 7; }
-
-.reward-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1rem;
   background-color: transparent;
-  object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(122, 86, 214, 0.6));
-  transition: transform 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  animation: rotate-container 20s linear infinite;
+  transform-origin: center center;
+  margin-top: 320px; /* Added margin to display the element a little down */
 }
 
-.reward-content:hover .reward-icon {
-  transform: scale(1.1) translateY(-5px);
-  filter: drop-shadow(0 0 12px rgba(122, 86, 214, 0.8));
+/* Keep existing reward item styles but add perspective for 3D effect */
+.reward-item {
+  flex: 0 1 calc(25% - 20px);
+  min-width: 250px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: counter-rotate 20s linear infinite;
 }
 
+/* Keep existing hover effects and add new keyframes */
 .reward-content {
   background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
   border-radius: 10px;
@@ -452,6 +491,7 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
               0 0 0 1px rgba(122, 86, 214, 0.3),
               0 0 0 4px rgba(122, 86, 214, 0.1);
+  animation-play-state: paused;
 }
 
 .reward-content:hover::before {
@@ -492,19 +532,19 @@
 /* Make the grid responsive */
 @media (max-width: 1200px) {
   .rewards-container {
-    grid-template-columns: repeat(4, 1fr);
+    animation-duration: 25s;
   }
-}
-
-@media (max-width: 992px) {
-  .rewards-container {
-    grid-template-columns: repeat(3, 1fr);
+  .reward-item {
+    animation-duration: 25s;
   }
 }
 
 @media (max-width: 768px) {
   .rewards-container {
-    grid-template-columns: repeat(2, 1fr);
+    animation-duration: 30s;
+  }
+  .reward-item {
+    animation-duration: 30s;
   }
 }
 
@@ -558,29 +598,83 @@
 
 /* Challenge Grid Styling */
 .challenges-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  margin-top: 40px;
-  justify-content: flex-start;
+  padding: 20px;
+  position: relative;
+  animation: grid-fade-in 1s ease-out forwards;
 }
 
+/* Add shimmer effect to the grid background */
+.challenges-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  animation: grid-shimmer 3s infinite;
+  pointer-events: none;
+}
+
+/* Add floating animation to challenge boxes */
 .challenge-box {
-  width: calc((100% - 60px) / 3);
-  background-color: #111111;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 0;
-  min-height: 450px;
+  /* Keep existing styles */
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
+/* Assign animation order to boxes */
+.challenge-box:nth-child(1) { --animation-order: 1; }
+.challenge-box:nth-child(2) { --animation-order: 2; }
+.challenge-box:nth-child(3) { --animation-order: 3; }
+.challenge-box:nth-child(4) { --animation-order: 4; }
+.challenge-box:nth-child(5) { --animation-order: 5; }
+.challenge-box:nth-child(6) { --animation-order: 6; }
+
+/* Add new keyframes */
+@keyframes grid-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes grid-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes challenge-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Enhanced hover effect */
 .challenge-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  animation-play-state: paused;
+  z-index: 1;
 }
 
 .challenge-title {
@@ -1366,30 +1460,201 @@
 /* Completed Startupathon Projects Grid */
 .completed-startuathon-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px; /* Keep gap between cards */
-  margin-top: 60px;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 20px;
+  perspective: 1000px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .completed-startupathon-item {
-  background: linear-gradient(145deg, rgba(122, 86, 214, 0.15), rgba(122, 86, 214, 0.05));
-  border-radius: 20px;
-  padding: 30px;
-  border: 2px solid #7a56d6;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 
-              0 0 0 1px rgba(122, 86, 214, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative;
+  background: #000000;
+  border: 1px solid #333;
+  border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.completed-hero-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.founder-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* 3D Hover Effects - Only activate on hover */
+.completed-startupathon-item:hover {
+  transform: translateY(-10px) rotateX(10deg) rotateY(-5deg);
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.completed-startupathon-item:hover .founder-image {
+  transform: scale(1.05) translateZ(20px);
+}
+
+/* Glowing border effect on hover */
+.completed-startupathon-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(76, 175, 80, 0.3),
+    transparent
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   opacity: 0;
-  animation: fade-in-up 0.8s ease-out forwards;
-  animation-delay: calc(0.15s * var(--item-index, 0));
-  min-height: 500px;
+  transition: opacity 0.4s ease;
+}
+
+.completed-startupathon-item:hover::before {
+  opacity: 1;
+}
+
+/* Text content styling */
+.completed-hero-text-info {
+  padding: 20px;
+  transform: translateZ(0);
+  transition: transform 0.4s ease;
+}
+
+.completed-startupathon-item:hover .completed-hero-text-info {
+  transform: translateZ(10px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .completed-startuathon-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .completed-startupathon-item:hover {
+    transform: translateY(-5px) rotateX(5deg) rotateY(-3deg);
+  }
+}
+
+/* Optional: Add smooth transition back to normal state */
+.completed-startupathon-item:not(:hover) {
+  transform: translateZ(0);
+  box-shadow: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add 3D lighting effect */
+.completed-hero-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(76, 175, 80, 0.2) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(76, 175, 80, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.completed-startupathon-item:hover .completed-hero-img-wrap::before {
+  opacity: 1;
+}
+
+/* Add 3D border glow */
+.completed-hero-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(76, 175, 80, 0.4) 0%,
+    transparent 50%,
+    rgba(76, 175, 80, 0.4) 100%
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.completed-startupathon-item:hover .completed-hero-img-wrap::after {
+  opacity: 1;
+}
+
+/* Add floating animation */
+@keyframes float3D {
+  0%, 100% {
+    transform: translateZ(20px) rotateX(10deg) rotateY(-10deg);
+  }
+  50% {
+    transform: translateZ(40px) rotateX(15deg) rotateY(-15deg);
+  }
+}
+
+.completed-startupathon-item:hover {
+  animation: float3D 3s ease-in-out infinite;
+}
+
+/* Add depth to text content */
+.completed-hero-text-info {
+  transform: translateZ(0);
+  transition: transform 0.5s ease;
+}
+
+.completed-startupathon-item:hover .completed-hero-text-info {
+  transform: translateZ(20px);
+}
+
+/* Enhanced shadow effect */
+.completed-startupathon-item {
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
+}
+
+.completed-startupathon-item:hover {
+  box-shadow: 
+    0 20px 40px -20px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(76, 175, 80, 0.2);
+}
+
+/* Smooth transition for all 3D effects */
+.completed-startupathon-item * {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .completed-startupathon-item:hover {
+    transform: translateY(-5px) rotateX(5deg) rotateY(-5deg);
+  }
+  
+  .completed-startupathon-item:hover .founder-image {
+    transform: translateZ(15px);
+  }
 }
 
 .completed-startupathon-item:nth-child(1) { --item-index: 1; }
@@ -1786,8 +2051,12 @@ html {
 }
 
 /* Add a scroll margin to account for fixed headers */
-#rewards, #ongoing, #completed {
+#rewards,#completed {
   scroll-margin-top: 100px;
+}
+#ongoing{
+  scroll-margin-top:100px ;
+  margin-top: 400px;
 }
 
 /* Founder Network Section */
@@ -2314,49 +2583,125 @@ html {
   }
 }
 
-/* Twitter Embed Container */
+/* Twitter Embed Container Animation */
 .twitter-embed-container {
-  margin: 40px auto 0;
-  max-width: 550px;
   position: relative;
-  border-radius: 16px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  perspective: 1000px;
+}
+
+.twitter-embed-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(76, 175, 80, 0.6) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.twitter-embed-container:hover {
+  transform: rotateX(5deg) rotateY(-5deg) translateZ(10px);
+}
+
+.twitter-embed-container:hover::before {
+  opacity: 1;
+  animation: twitterBorderPulse 2s ease-in-out infinite;
+}
+
+/* Floating particles effect */
+.twitter-embed-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--particle-x, 50%) var(--particle-y, 50%),
+    rgba(76, 175, 80, 0.3) 0%,
+    transparent 50%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.twitter-embed-container:hover::after {
+  opacity: 1;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+@keyframes twitterBorderPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    --particle-x: 20%;
+    --particle-y: 20%;
+  }
+  25% {
+    --particle-x: 80%;
+    --particle-y: 20%;
+  }
+  50% {
+    --particle-x: 80%;
+    --particle-y: 80%;
+  }
+  75% {
+    --particle-x: 20%;
+    --particle-y: 80%;
+  }
+  100% {
+    --particle-x: 20%;
+    --particle-y: 20%;
+  }
+}
+
+/* Add shine effect */
+@keyframes shine {
+  0% {
+    background-position: -100% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.twitter-embed-container {
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Style the iframe */
-.twitter-embed {
-  border: none;
-  border-radius: 16px;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Add a subtle gradient overlay */
 .twitter-embed-container::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(122, 86, 214, 0.2) 0%, transparent 50%);
-  pointer-events: none; /* Allow clicks to pass through */
-  z-index: 1;
-  border-radius: 16px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .twitter-embed-container {
-    width: 100%;
-    max-width: 100%;
-  }
-  
-  .twitter-embed {
-    width: 100% !important;
-    height: 552px !important;
-  }
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(76, 175, 80, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shine 3s infinite linear;
+  pointer-events: none;
 }
 
 /* Subscription Container */
@@ -2897,7 +3242,7 @@ html {
 
 /* Only prevent horizontal scrolling */
 html, body {
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden; 
   max-width: 100%; /* Ensure content doesn't exceed viewport width */
 }
 
@@ -2942,4 +3287,460 @@ html, body {
 .exciting-career-title.visible,
 .animated-career-title.visible {
   animation-play-state: running !important;
+}
+
+/* Add new keyframes for circular rotation */
+@keyframes rotate-container {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Counter-rotation to keep items upright */
+@keyframes counter-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Pause animations on container hover */
+.rewards-container:hover {
+  animation-play-state: paused;
+}
+
+.rewards-container:hover .reward-item {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .rewards-container {
+    animation-duration: 25s;
+  }
+  .reward-item {
+    animation-duration: 25s;
+  }
+}
+
+@media (max-width: 768px) {
+  .rewards-container {
+    animation-duration: 30s;
+  }
+  .reward-item {
+    animation-duration: 30s;
+  }
+}
+
+/* Image animations */
+.challenge-box img:not(.deadline-icon) {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  animation: image-pulse 3s ease-in-out infinite;
+}
+
+.challenge-box:hover img:not(.deadline-icon) {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Button animations */
+.challenge-button {
+  /* Keep existing styles */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: button-glow 2s infinite;
+  background: linear-gradient(45deg, #111, #333);
+  background-size: 200% 200%;
+}
+
+.challenge-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  transform: rotate(0deg);
+  animation: button-shine 4s linear infinite;
+  pointer-events: none;
+}
+
+.challenge-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+  background-position: 100% 100%;
+}
+
+.button-text {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.challenge-button:hover .button-text {
+  transform: scale(1.05);
+}
+
+/* New keyframes for the animations */
+@keyframes image-pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes button-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2),
+                0 0 10px rgba(0, 255, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3),
+                0 0 20px rgba(0, 255, 0, 0.2);
+  }
+}
+
+@keyframes button-shine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .challenge-box img:not(.deadline-icon) {
+    height: 180px;
+    animation-duration: 4s;
+  }
+  
+  .challenge-button {
+    animation-duration: 3s;
+  }
+}
+
+/* Add a container for the wave animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Wave animation container */
+.wave-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #000000;
+  overflow: hidden;
+}
+
+/* Wave elements */
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(76, 175, 80, 0.3) 0%,    /* Brighter green core */
+    rgba(76, 175, 80, 0.2) 20%,   /* Middle green layer */
+    rgba(76, 175, 80, 0.1) 40%,   /* Outer green layer */
+    rgba(16, 185, 129, 0.05) 60%, /* Teal accent */
+    transparent 70%
+  );
+  mix-blend-mode: screen;         /* Makes the waves more visible on dark background */
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+/* Enhanced wave animation */
+@keyframes wave-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Add multiple waves for more dramatic effect */
+.wave::before,
+.wave::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  animation: wave-ripple 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  animation-delay: 0.5s;
+}
+
+.wave::after {
+  animation-delay: 1s;
+}
+
+/* Add a subtle glow effect */
+.wave-background::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(76, 175, 80, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.wave-background.active::after {
+  opacity: 1;
+}
+
+/* Add this JavaScript to create and animate waves */
+
+/* Background touch animation container */
+.touch-effect-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Bright pulse animation */
+.touch-pulse {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: touchPulse 3s ease-out forwards;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 127, 0.8) 0%,    /* Bright neon green core */
+    rgba(0, 255, 127, 0.6) 30%,   /* Mid-layer */
+    rgba(0, 255, 127, 0.4) 50%,   /* Outer layer */
+    rgba(0, 255, 127, 0.2) 70%,   /* Fade out */
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Keyframes for the touch pulse effect */
+@keyframes touchPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Additional glow effect */
+.touch-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  animation: touchGlow 3s ease-out forwards;
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(64, 255, 180, 0.4) 0%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+}
+
+@keyframes touchGlow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Update challenge box for 3D effects */
+.challenge-box {
+  /* Keep existing styles */
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Image container for 3D rotation */
+.challenge-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image styling with 3D effects */
+.challenge-box img:not(.deadline-icon) {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Create back side of the rotating card */
+.challenge-image-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #111 0%, #000 100%);
+  border-radius: 8px 8px 0 0;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: #4CAF50;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.2);
+}
+
+/* Hover effects */
+.challenge-box:hover .challenge-image-container {
+  transform: rotateY(180deg);
+}
+
+/* Add shine effect */
+.challenge-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.challenge-box:hover .challenge-image-container::before {
+  animation: shine 1s;
+}
+
+/* Add floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotateX(0);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(5deg);
+  }
+}
+
+.challenge-box {
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.challenge-box:hover {
+  animation-play-state: running;
+}
+
+/* Shine animation */
+@keyframes shine {
+  100% {
+    left: 150%;
+  }
+}
+
+/* Add glowing edge effect */
+.challenge-image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px 8px 0 0;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, 
+    rgba(76, 175, 80, 0.2),
+    transparent,
+    rgba(76, 175, 80, 0.2)
+  ) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .challenge-image-container {
+    height: 180px;
+  }
+  
+  .challenge-box img:not(.deadline-icon) {
+    height: 180px;
+  }
+  
+  .challenge-image-back {
+    font-size: 16px;
+  }
 }
