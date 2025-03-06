@@ -209,7 +209,6 @@ const seedDatabase = async () => {
 const startServer = async () => {
   try {
     await connectDB();
-    await seedDatabase();
     
     app.listen(3000, () => {
       console.log("Server is running on port 3000");
