@@ -823,8 +823,8 @@ useEffect(() => {
 }
 
 .deadline-icon {
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 28px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
@@ -1570,24 +1570,129 @@ useEffect(() => {
 /* Completed Startupathon Projects Grid */
 .completed-startuathon-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  padding: 20px;
-  perspective: 1000px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
+/* Remove hover effects and add default styling for the box */
 .completed-startupathon-item {
-  background: #000000;
-  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  overflow: hidden;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  /* Default glow */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  cursor: default; /* Remove pointer cursor from the box */
+}
+
+/* Remove all hover states from the box */
+.completed-startupathon-item:hover {
+  transform: none;
+  cursor: default;
+}
+
+/* Style the button container */
+.view-details-wrapper {
+  margin-top: 1.5rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.view-details-wrapper .view-details-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d; /* Enable 3D transformations */
+}
+
+/* 3D hover effect */
+.view-details-wrapper .view-details-btn:hover {
+  transform: translateY(-8px) translateZ(20px) rotateX(10deg);
+  box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2),
+    0 5px 10px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Add pseudo-element for enhanced 3D effect */
+.view-details-wrapper .view-details-btn::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  transform: translateZ(-1px);
+  pointer-events: none;
+}
+
+/* Style the button text */
+.view-details-wrapper .button-text {
+  color: white;
+  font-weight: 500;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(0);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add subtle animation on hover */
+@keyframes buttonGlow {
+  0%,
+  100% {
+    box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2),
+      0 5px 10px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 30px rgba(255, 255, 255, 0.25),
+      0 8px 15px rgba(255, 255, 255, 0.15);
+  }
+}
+
+.view-details-wrapper .view-details-btn:hover {
+  animation: buttonGlow 2s ease-in-out infinite;
+}
+
+/* Remove transform styles */
+.completed-startupathon-item,
+.completed-hero-img-wrap,
+.founder-image,
+.completed-hero-text-info,
+.complet-pro-info,
+.funding-info-wrap,
+.view-details-btn {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Responsive layout */
+@media (max-width: 1200px) {
+  .completed-startuathon-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .completed-startuathon-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .completed-hero-img-wrap {
@@ -1599,19 +1704,13 @@ useEffect(() => {
 
 .founder-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
 
-/* 3D Hover Effects - Only activate on hover */
-.completed-startupathon-item:hover {
-  transform: translateY(-10px) rotateX(10deg) rotateY(-5deg);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(76, 175, 80, 0.3);
-}
-
-.completed-startupathon-item:hover .founder-image {
-  transform: scale(1.05) translateZ(20px);
+.completed-hero-text-info {
+  margin-top: 1rem;
 }
 
 /* Glowing border effect on hover */
@@ -1715,13 +1814,7 @@ useEffect(() => {
 
 /* Add floating animation */
 @keyframes float3D {
-  0%,
-  100% {
-    transform: translateZ(20px) rotateX(10deg) rotateY(-10deg);
-  }
-  50% {
-    transform: translateZ(40px) rotateX(15deg) rotateY(-15deg);
-  }
+  // Remove this keyframe if not used elsewhere
 }
 
 .completed-startupathon-item:hover {
@@ -3897,4 +3990,64 @@ body::before {
   .challenge-image-back {
     font-size: 16px;
   }
+}
+
+/* Add floating animation keyframes */
+@keyframes viewDetailsFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Style for view details button specifically within completed-startupathon-item */
+.completed-startupathon-item .view-details-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  /* Enhanced glow effect */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+  /* Floating animation */
+  animation: viewDetailsFloat 3s ease-in-out infinite;
+  /* Ensure the button's animations aren't blocked by parent styles */
+  transform: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Override any existing button text styles */
+.completed-startupathon-item .view-details-btn .button-text {
+  color: white;
+  font-weight: 500;
+  transform: none !important;
+}
+
+@keyframes viewDetailsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Optional: enhance glow on hover */
+.completed-startupathon-item .view-details-btn:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2),
+    inset 0 0 15px rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
