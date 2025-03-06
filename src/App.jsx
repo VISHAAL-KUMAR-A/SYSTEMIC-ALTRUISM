@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import "./App.css";
-
+import { apiUrl } from "./main";
 function App() {
   const [items, setItems] = useState([
     {
@@ -209,7 +209,7 @@ function App() {
   const contentRefs = useRef([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/")
+    fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => setItems(data));
 
