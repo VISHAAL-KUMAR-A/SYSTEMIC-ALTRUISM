@@ -520,7 +520,10 @@ function App() {
         <a href="#mentor" className="nav-link">
           Mentor Network
         </a>
-        <button className="fellowship-btn">Apply For Fellowship</button>
+        <a href="/admin/dashboard">
+          {" "}
+          <button className="fellowship-btn">Apply For Fellowship</button>
+        </a>
       </nav>
 
       <div className="content-section" ref={addToRefs}>
