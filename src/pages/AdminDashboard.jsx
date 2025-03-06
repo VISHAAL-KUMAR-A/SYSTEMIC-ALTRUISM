@@ -50,13 +50,16 @@ function AdminDashboard() {
   // Function to toggle challenge visibility
   const handleVisibilityToggle = async (id, currentVisibility) => {
     try {
-      const response = await fetch(`${apiUrl}/challenges/${id}/visibility`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ isVisible: !currentVisibility }),
-      });
+      const response = await fetch(
+        apiUrl + "/challenges/" + id + "/visibility",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ isVisible: !currentVisibility }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Failed to update visibility (${response.status})`);
