@@ -5,7 +5,9 @@ import "./index.css";
 import App from "./App.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 export const apiUrl =
-  process.env.NODE_ENV == "production" ? "renderUrl" : "http://localhost:3000/";
+  process.env.NODE_ENV == "production"
+    ? "https://systemic-altruism.onrender.com"
+    : "http://localhost:3000/";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
