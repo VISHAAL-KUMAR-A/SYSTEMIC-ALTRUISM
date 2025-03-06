@@ -14,7 +14,10 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route
+          path="https://systemic-altruism-lac.vercel.app/admin/dashboard"
+          element={<AdminDashboard />}
+        />
       </Routes>
     </BrowserRouter>
   </StrictMode>
