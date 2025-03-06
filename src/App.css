@@ -1,8 +1,8 @@
-*{
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    box-sizing: border-box;
-    background-color: black;
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  background-color: black;
 }
 .navbar {
   position: fixed;
@@ -19,7 +19,10 @@
   backdrop-filter: blur(5px);
 }
 
-.nav-link, .fellowship-btn, .logo, .brand-text {
+.nav-link,
+.fellowship-btn,
+.logo,
+.brand-text {
   background-color: transparent;
 }
 
@@ -31,7 +34,7 @@
 }
 
 .nav-link:hover {
-  color: #1E90FF;
+  color: #1e90ff;
 }
 
 .nav-link.brand {
@@ -69,38 +72,32 @@
 }
 
 .fellowship-btn {
-    animation: background-pan 3s linear infinite, pulse 2s ease-in-out infinite;
-    background: linear-gradient(
-      to right,
-      #7a56d6,
-      #a58ae9,
-      #efeafc,
-      #7a56d6
-    );
-    background-size: 200%;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  animation: background-pan 3s linear infinite, pulse 2s ease-in-out infinite;
+  background: linear-gradient(to right, #7a56d6, #a58ae9, #efeafc, #7a56d6);
+  background-size: 200%;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .fellowship-btn:hover {
-    box-shadow: 0 0 15px #ADD8E6;
-    transform: scale(1.05);
+  box-shadow: 0 0 15px #add8e6;
+  transform: scale(1.05);
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Hero Image Advanced Animation */
@@ -109,15 +106,15 @@
   transform-style: preserve-3d;
   transition: all 0.5s ease;
   width: 100%;
-background: linear-gradient(
-  to bottom,
-  rgba(0, 0, 0, 0.8) 30%,
-  rgba(255, 255, 255, 0.2) 100%
-);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
 }
 
 .hero-image::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -135,7 +132,7 @@ background: linear-gradient(
 }
 
 .hero-image::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
@@ -154,7 +151,8 @@ background: linear-gradient(
 }
 
 @keyframes heroGlow {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -185,57 +183,51 @@ useEffect(() => {
 }
 
 .startupathon-title {
-    animation: background-pan 3s linear infinite, text-shadow-pulse 2s infinite;
-    background: linear-gradient(
-      to right,
-      #7a56d6,
-      #a58ae9,
-      #efeafc,
-      #7a56d6
-    );
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 700;
-    margin-top: 20px;
-    color: #000;
-    letter-spacing: 2px;
-    line-height: 1.2;
+  animation: background-pan 3s linear infinite, text-shadow-pulse 2s infinite;
+  background: linear-gradient(to right, #7a56d6, #a58ae9, #efeafc, #7a56d6);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #000;
+  letter-spacing: 2px;
+  line-height: 1.2;
 }
 
 @keyframes text-shadow-pulse {
-    0% {
-        text-shadow: 0 0 5px rgba(122, 86, 214, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 15px rgba(122, 86, 214, 0.7);
-    }
-    100% {
-        text-shadow: 0 0 5px rgba(122, 86, 214, 0.3);
-    }
+  0% {
+    text-shadow: 0 0 5px rgba(122, 86, 214, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(122, 86, 214, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(122, 86, 214, 0.3);
+  }
 }
 
 .startupathon-subtitle {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: white;
-    letter-spacing: 1px;
-    opacity: 0;
-    animation: fade-in 1.5s ease-out forwards 0.5s;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: fade-in 1.5s ease-out forwards 0.5s;
 }
 
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .video-container {
@@ -277,7 +269,7 @@ useEffect(() => {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin: 2rem auto;
+  /* margin: 2rem auto; */
   width: 90%;
   max-width: 1200px;
   opacity: 0;
@@ -285,11 +277,7 @@ useEffect(() => {
 }
 
 .action-btn {
-  background: linear-gradient(
-    to right,
-    #7a56d6,
-    #a58ae9
-  );
+  background: linear-gradient(to right, #7a56d6, #a58ae9);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -328,7 +316,7 @@ useEffect(() => {
 }
 
 .action-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -359,7 +347,7 @@ useEffect(() => {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .action-btn {
     width: 80%;
     justify-content: space-between;
@@ -397,7 +385,8 @@ useEffect(() => {
     text-shadow: 0 0 5px rgba(122, 86, 214, 0.3);
   }
   50% {
-    text-shadow: 0 0 15px rgba(122, 86, 214, 0.8), 0 0 30px rgba(165, 138, 233, 0.6);
+    text-shadow: 0 0 15px rgba(122, 86, 214, 0.8),
+      0 0 30px rgba(165, 138, 233, 0.6);
   }
   100% {
     text-shadow: 0 0 5px rgba(122, 86, 214, 0.3);
@@ -405,7 +394,7 @@ useEffect(() => {
 }
 
 .rewards-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -431,66 +420,164 @@ useEffect(() => {
 }
 
 .rewards-container {
-  background-color: transparent;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 2rem;
+  margin-top: 3rem;
   position: relative;
-  animation: rotate-container 20s linear infinite;
-  transform-origin: center center;
-  margin-top: 320px; /* Added margin to display the element a little down */
-}
-
-/* Keep existing reward item styles but add perspective for 3D effect */
-.reward-item {
-  flex: 0 1 calc(25% - 20px);
-  min-width: 250px;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  animation: counter-rotate 20s linear infinite;
-}
-
-/* Keep existing hover effects and add new keyframes */
-.reward-content {
-  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
-              0 0 0 1px rgba(122, 86, 214, 0.2),
-              0 0 0 4px rgba(122, 86, 214, 0.05),
-              1px 1px 5px 1px #7a56d6b3;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  z-index: 1;
+  /* Replace rotation with subtle pulse and wave effects */
+  animation: container-pulse 4s ease-in-out infinite;
   position: relative;
   overflow: hidden;
-  animation: float 6s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.5s);
 }
 
-.reward-content::before {
-  content: '';
+/* Add a pseudo-element for the wave effect */
+.rewards-container::before {
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(122, 86, 214, 0.1) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    circle,
+    rgba(92, 36, 255, 0.1) 0%,
+    rgba(13, 12, 34, 0) 70%
+  );
+  animation: wave-effect 15s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Add a second pseudo-element for another wave layer */
+.rewards-container::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 59, 255, 0.1) 0%,
+    rgba(13, 12, 34, 0) 60%
+  );
+  animation: wave-effect 12s linear infinite reverse;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Define the container pulse animation */
+@keyframes container-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(92, 36, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px 5px rgba(255, 59, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(92, 36, 255, 0.1);
+  }
+}
+
+/* Define the wave effect animation */
+@keyframes wave-effect {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.reward-item {
+  flex: 1 1 300px;
+  max-width: 350px;
+  min-height: 300px;
+  position: relative;
+  margin-top: 10px;
+  /* Add subtle floating animation instead of counter-rotation */
+  animation: reward-float 6s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+/* Define the floating animation for reward items */
+@keyframes reward-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Make each reward item float at different times */
+.reward-item:nth-child(1) {
+  animation-delay: 0s;
+}
+.reward-item:nth-child(2) {
+  animation-delay: 1s;
+}
+.reward-item:nth-child(3) {
+  animation-delay: 2s;
+}
+.reward-item:nth-child(4) {
+  animation-delay: 0.5s;
+}
+.reward-item:nth-child(5) {
+  animation-delay: 1.5s;
+}
+.reward-item:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+.reward-content {
+  background: rgba(13, 12, 34, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Add subtle pulse to the content */
+  animation: content-pulse 4s ease-in-out infinite;
+}
+
+@keyframes content-pulse {
+  0% {
+    box-shadow: 0 0 10px 0 rgba(255, 59, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(92, 36, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px 0 rgba(255, 59, 255, 0.2);
+  }
+}
+
+.reward-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(45deg, #ff3bff, #5c24ff, #0065ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  /* Remove any blinking/pulsing animations here */
 }
 
 .reward-content:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
-              0 0 0 1px rgba(122, 86, 214, 0.3),
-              0 0 0 4px rgba(122, 86, 214, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(122, 86, 214, 0.3),
+    0 0 0 4px rgba(122, 86, 214, 0.1);
   animation-play-state: paused;
 }
 
@@ -585,15 +672,15 @@ useEffect(() => {
 }
 
 .sec-subhead {
-    color: #cccccceb;
-    text-align: center;
-    font-size: 1.2rem;
-    font-style: italic;
-    font-weight: 400;
-    display: block;
-    margin-top: 0;
-    opacity: 0;
-    animation: fade-in 1.5s ease-out forwards 0.8s;
+  color: #cccccceb;
+  text-align: center;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+  margin-top: 0;
+  opacity: 0;
+  animation: fade-in 1.5s ease-out forwards 0.8s;
 }
 
 /* Challenge Grid Styling */
@@ -608,7 +695,7 @@ useEffect(() => {
 
 /* Add shimmer effect to the grid background */
 .challenges-grid::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -632,12 +719,24 @@ useEffect(() => {
 }
 
 /* Assign animation order to boxes */
-.challenge-box:nth-child(1) { --animation-order: 1; }
-.challenge-box:nth-child(2) { --animation-order: 2; }
-.challenge-box:nth-child(3) { --animation-order: 3; }
-.challenge-box:nth-child(4) { --animation-order: 4; }
-.challenge-box:nth-child(5) { --animation-order: 5; }
-.challenge-box:nth-child(6) { --animation-order: 6; }
+.challenge-box:nth-child(1) {
+  --animation-order: 1;
+}
+.challenge-box:nth-child(2) {
+  --animation-order: 2;
+}
+.challenge-box:nth-child(3) {
+  --animation-order: 3;
+}
+.challenge-box:nth-child(4) {
+  --animation-order: 4;
+}
+.challenge-box:nth-child(5) {
+  --animation-order: 5;
+}
+.challenge-box:nth-child(6) {
+  --animation-order: 6;
+}
 
 /* Add new keyframes */
 @keyframes grid-fade-in {
@@ -661,7 +760,8 @@ useEffect(() => {
 }
 
 @keyframes challenge-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -798,248 +898,251 @@ useEffect(() => {
 
 /* Timeline Component Styles */
 .timeline_component-2 {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 1120px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  position: relative;
 }
 
 .timeline_progress-3 {
-    width: 2px;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 0;
+  width: 2px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
 }
 
 .timeline_progress-bar-3 {
-    width: 100%;
-    height: 0%;
-    background-color: #7a56d6;
-    transition: height 0.5s ease-out;
+  width: 100%;
+  height: 0%;
+  background-color: #7a56d6;
+  transition: height 0.5s ease-out;
 }
 
 .timeline_item {
-    width: 100%;
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr 60px 1fr;
-    grid-auto-columns: 1fr;
-    display: grid;
-    position: relative;
-    margin-bottom: 40px;
+  width: 100%;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 60px 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+  position: relative;
+  margin-bottom: 40px;
 }
 
 .timeline_item .timeline_left {
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .timeline_item .timeline_right {
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .timeline_item .timeline_circle {
-    transform: scale(0.5);
-    transition: transform 0.6s ease, background-color 0.6s ease;
+  transform: scale(0.5);
+  transition: transform 0.6s ease, background-color 0.6s ease;
 }
 
 .timeline_item-active .timeline_left,
 .timeline_item-active .timeline_right {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .timeline_item-active .timeline_circle {
-    transform: scale(1);
-    background-color: #7a56d6;
+  transform: scale(1);
+  background-color: #7a56d6;
 }
 
 /* Add a pulsing effect to the active timeline circle */
 @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(122, 86, 214, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(122, 86, 214, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(122, 86, 214, 0);
-    }
+  0% {
+    box-shadow: 0 0 0 0 rgba(122, 86, 214, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(122, 86, 214, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(122, 86, 214, 0);
+  }
 }
 
 .timeline_item-active .timeline_circle {
-    animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
 }
 
 .timeline_left {
-    grid-column-gap: 16px;
-    grid-row-gap: 16px;
-    flex-direction: column;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr;
-    grid-auto-columns: 1fr;
-    justify-content: center;
-    align-items: flex-end;
-    display: flex;
-    opacity: 1;
-    transition: opacity 0.3s;
-    text-align: right;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  flex-direction: column;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
+  opacity: 1;
+  transition: opacity 0.3s;
+  text-align: right;
 }
 
 .timeline_date-text-2 {
-    color: #7a56d6;
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    font-weight: 700;
-    line-height: 1.4;
+  color: #7a56d6;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .timeline_centre {
-    z-index: 1;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .timeline_text-2 {
-    color: #fff;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.4;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .margin-bottom-xlarge {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .margin-bottom-medium {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .text-block-67 {
-    color: #cccccc;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 .step-tip {
-    background-color: rgba(122, 86, 214, 0.1);
-    border-left: 3px solid #7a56d6;
-    padding: 12px;
-    border-radius: 0 4px 4px 0;
+  background-color: rgba(122, 86, 214, 0.1);
+  border-left: 3px solid #7a56d6;
+  padding: 12px;
+  border-radius: 0 4px 4px 0;
 }
 
 .text-span-11 {
-    color: #7a56d6;
-    font-weight: 700;
+  color: #7a56d6;
+  font-weight: 700;
 }
 
 .timeline_image-wrapper {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .timeline_image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    background-color: transparent;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background-color: transparent;
 }
 
 .overlay-fade-bottom {
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to top, #000, transparent);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #000, transparent);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
 }
 
 /* Responsive adjustments */
 @media (max-width: 991px) {
-    .timeline_component-2 {
-        max-width: 90%;
-    }
-    
-    .timeline_item {
-        grid-template-columns: 1fr;
-        grid-row-gap: 16px;
-    }
-    
-    .timeline_left, .timeline_centre, .timeline_right {
-        grid-column: 1;
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-    
-    .timeline_left {
-        text-align: left;
-    }
-    
-    .timeline_progress-3 {
-        left: 12px;
-    }    
-    .timeline_centre {
-        justify-content: flex-start;
-        margin-bottom: 16px;
-    }
+  .timeline_component-2 {
+    max-width: 90%;
+  }
+
+  .timeline_item {
+    grid-template-columns: 1fr;
+    grid-row-gap: 16px;
+  }
+
+  .timeline_left,
+  .timeline_centre,
+  .timeline_right {
+    grid-column: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .timeline_left {
+    text-align: left;
+  }
+
+  .timeline_progress-3 {
+    left: 12px;
+  }
+  .timeline_centre {
+    justify-content: flex-start;
+    margin-bottom: 16px;
+  }
 }
 
 @media (max-width: 767px) {
-    .timeline_date-text-2, .timeline_text-2 {
-        font-size: 1.2rem;
-    }
-    
-    .text-block-67 {
-        font-size: 0.9rem;
-    }
+  .timeline_date-text-2,
+  .timeline_text-2 {
+    font-size: 1.2rem;
+  }
+
+  .text-block-67 {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 479px) {
-    .timeline_component-2 {
-        max-width: 95%;
-    }
+  .timeline_component-2 {
+    max-width: 95%;
+  }
 }
 
 /* Update the timeline text color for specific items */
 .timeline_text-2 {
-    color: #fff;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.4;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 /* Add this new selector to target the specific text elements */
 .step-1 .timeline_text-2,
 .timeline_item:last-child .timeline_text-2 {
-    color: #7a56d6; /* Violet color */
+  color: #7a56d6; /* Violet color */
 }
 
 /* More specific selector for the last timeline item */
 .timeline_item:nth-child(4) .timeline_text-2 {
-    color: #7a56d6 !important; /* Violet color with !important to override any other styles */
+  color: #7a56d6 !important; /* Violet color with !important to override any other styles */
 }
 
 /* Direct class for violet text */
 .violet-text {
-    color: #7a56d6 !important;
+  color: #7a56d6 !important;
 }
 
 /* Tips Section Styles */
@@ -1074,7 +1177,7 @@ useEffect(() => {
 }
 
 .tips-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1157,7 +1260,7 @@ useEffect(() => {
   line-height: 1.3;
   position: relative;
   display: inline-block;
-  animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
 @keyframes text-focus-in {
@@ -1173,7 +1276,7 @@ useEffect(() => {
 
 /* Add a decorative element above the title */
 .stories-title::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -30px;
   left: 50%;
@@ -1188,7 +1291,7 @@ useEffect(() => {
   .stories-section {
     margin-top: 70px;
   }
-  
+
   .stories-title {
     font-size: 1.8rem;
   }
@@ -1208,7 +1311,7 @@ useEffect(() => {
 }
 
 .stories-video-wrap::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1247,10 +1350,13 @@ useEffect(() => {
   margin: 100px auto 60px;
   padding: 60px 40px;
   border-radius: 20px;
-  background: linear-gradient(135deg, rgba(122, 86, 214, 0.15) 0%, rgba(122, 86, 214, 0.05) 100%);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 
-              0 0 0 1px rgba(122, 86, 214, 0.2),
-              inset 0 0 30px rgba(122, 86, 214, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(122, 86, 214, 0.15) 0%,
+    rgba(122, 86, 214, 0.05) 100%
+  );
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(122, 86, 214, 0.2),
+    inset 0 0 30px rgba(122, 86, 214, 0.1);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1259,13 +1365,17 @@ useEffect(() => {
 
 /* Add a subtle animated gradient background */
 .fellowship-content-wrap::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(122, 86, 214, 0.1) 0%, transparent 60%);
+  background: radial-gradient(
+    circle,
+    rgba(122, 86, 214, 0.1) 0%,
+    transparent 60%
+  );
   animation: rotate 20s linear infinite;
   z-index: -1;
 }
@@ -1325,7 +1435,7 @@ useEffect(() => {
 
 /* Add a shine effect on hover */
 .fellowship-cta-on-startupathon::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
@@ -1353,15 +1463,15 @@ useEffect(() => {
     padding: 40px 20px;
     margin: 70px auto 40px;
   }
-  
+
   .fellowship-head {
     font-size: 2rem;
   }
-  
+
   .fellowship-subhead {
     font-size: 1.1rem;
   }
-  
+
   .fellowship-cta-on-startupathon {
     padding: 14px 28px;
     font-size: 1.1rem;
@@ -1385,7 +1495,7 @@ useEffect(() => {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  animation: letter-focus 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: letter-focus 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
 /* Letter animation for the title */
@@ -1405,7 +1515,7 @@ useEffect(() => {
 /* Add decorative elements */
 .completed-title::before,
 .completed-title::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 3px;
   width: 0;
@@ -1447,11 +1557,11 @@ useEffect(() => {
   .completed-section {
     margin-top: 100px;
   }
-  
+
   .completed-title {
     font-size: 2rem;
   }
-  
+
   .completed-subtitle {
     font-size: 1.1rem;
   }
@@ -1497,9 +1607,7 @@ useEffect(() => {
 /* 3D Hover Effects - Only activate on hover */
 .completed-startupathon-item:hover {
   transform: translateY(-10px) rotateX(10deg) rotateY(-5deg);
-  box-shadow: 
-    0 15px 30px rgba(0, 0, 0, 0.5),
-    0 0 15px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(76, 175, 80, 0.3);
 }
 
 .completed-startupathon-item:hover .founder-image {
@@ -1508,7 +1616,7 @@ useEffect(() => {
 
 /* Glowing border effect on hover */
 .completed-startupathon-item::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: 12px;
@@ -1564,7 +1672,7 @@ useEffect(() => {
 
 /* Add 3D lighting effect */
 .completed-hero-img-wrap::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -1586,7 +1694,7 @@ useEffect(() => {
 
 /* Add 3D border glow */
 .completed-hero-img-wrap::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: -2px;
   background: linear-gradient(
@@ -1607,7 +1715,8 @@ useEffect(() => {
 
 /* Add floating animation */
 @keyframes float3D {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateZ(20px) rotateX(10deg) rotateY(-10deg);
   }
   50% {
@@ -1636,8 +1745,7 @@ useEffect(() => {
 }
 
 .completed-startupathon-item:hover {
-  box-shadow: 
-    0 20px 40px -20px rgba(0, 0, 0, 0.5),
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5),
     0 0 20px rgba(76, 175, 80, 0.2);
 }
 
@@ -1651,18 +1759,30 @@ useEffect(() => {
   .completed-startupathon-item:hover {
     transform: translateY(-5px) rotateX(5deg) rotateY(-5deg);
   }
-  
+
   .completed-startupathon-item:hover .founder-image {
     transform: translateZ(15px);
   }
 }
 
-.completed-startupathon-item:nth-child(1) { --item-index: 1; }
-.completed-startupathon-item:nth-child(2) { --item-index: 2; }
-.completed-startupathon-item:nth-child(3) { --item-index: 3; }
-.completed-startupathon-item:nth-child(4) { --item-index: 4; }
-.completed-startupathon-item:nth-child(5) { --item-index: 5; }
-.completed-startupathon-item:nth-child(6) { --item-index: 6; }
+.completed-startupathon-item:nth-child(1) {
+  --item-index: 1;
+}
+.completed-startupathon-item:nth-child(2) {
+  --item-index: 2;
+}
+.completed-startupathon-item:nth-child(3) {
+  --item-index: 3;
+}
+.completed-startupathon-item:nth-child(4) {
+  --item-index: 4;
+}
+.completed-startupathon-item:nth-child(5) {
+  --item-index: 5;
+}
+.completed-startupathon-item:nth-child(6) {
+  --item-index: 6;
+}
 
 @keyframes fade-in-up {
   0% {
@@ -1683,7 +1803,7 @@ useEffect(() => {
 
 /* Add a subtle gradient overlay on hover */
 .completed-startupathon-item::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1906,13 +2026,17 @@ useEffect(() => {
 
 /* Add a subtle animated gradient background */
 .completed-startupathon-item::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 60%
+  );
   animation: rotate 20s linear infinite;
   z-index: -1;
 }
@@ -1939,11 +2063,11 @@ useEffect(() => {
     grid-template-columns: 1fr;
     max-width: 600px;
   }
-  
+
   .completed-startupathon-item {
     padding: 25px;
   }
-  
+
   .completed-hero-img-wrap {
     width: 150px;
     height: 150px;
@@ -1955,11 +2079,11 @@ useEffect(() => {
     width: 120px;
     height: 120px;
   }
-  
+
   .pro-head {
     font-size: 1.5rem;
   }
-  
+
   .selected-candi-name {
     font-size: 1.3rem;
   }
@@ -1995,13 +2119,17 @@ useEffect(() => {
 }
 
 .see-more-link::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -2023,7 +2151,7 @@ useEffect(() => {
 
 /* Add a shine effect on hover */
 .see-more-link::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
@@ -2051,11 +2179,12 @@ html {
 }
 
 /* Add a scroll margin to account for fixed headers */
-#rewards,#completed {
+#rewards,
+#completed {
   scroll-margin-top: 100px;
 }
-#ongoing{
-  scroll-margin-top:100px ;
+#ongoing {
+  scroll-margin-top: 100px;
   margin-top: 400px;
 }
 
@@ -2075,7 +2204,7 @@ html {
   line-height: 1.3;
   position: relative;
   display: inline-block;
-  animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
 @keyframes text-focus-in {
@@ -2091,7 +2220,7 @@ html {
 
 /* Add a subtle gradient underline that animates in */
 .founder-network-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -2136,11 +2265,11 @@ html {
   .founder-network-section {
     margin-top: 80px;
   }
-  
+
   .founder-network-title {
     font-size: 2rem;
   }
-  
+
   .founder-network-subtitle {
     font-size: 1.2rem;
   }
@@ -2161,7 +2290,11 @@ html {
 }
 
 .network-card {
-  background: linear-gradient(145deg, rgba(122, 86, 214, 0.15), rgba(122, 86, 214, 0.05));
+  background: linear-gradient(
+    145deg,
+    rgba(122, 86, 214, 0.15),
+    rgba(122, 86, 214, 0.05)
+  );
   border: 2px solid #7a56d6;
   border-radius: 20px;
   padding: 25px;
@@ -2308,7 +2441,7 @@ html {
 
 /* Add the arrow to the pagination link */
 .pagination-text::after {
-  content: ' →';
+  content: " →";
   display: inline-block;
   margin-left: 10px;
   transition: transform 0.3s ease;
@@ -2355,7 +2488,11 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #7a56d6, #a58ae9); /* Gradient matching site colors */
+  background: linear-gradient(
+    45deg,
+    #7a56d6,
+    #a58ae9
+  ); /* Gradient matching site colors */
   border-radius: 20px; /* More rounded for oval effect */
   border: 2px solid #121212; /* Creates padding effect */
   box-shadow: 0 0 8px rgba(122, 86, 214, 0.5);
@@ -2364,7 +2501,11 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #a58ae9, #7a56d6); /* Reverse gradient on hover */
+  background: linear-gradient(
+    45deg,
+    #a58ae9,
+    #7a56d6
+  ); /* Reverse gradient on hover */
   box-shadow: 0 0 12px rgba(122, 86, 214, 0.8);
 }
 
@@ -2431,7 +2572,7 @@ html {
 
 /* Add a subtle underline to the highlighted text */
 .highlight-text::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -2502,7 +2643,8 @@ html {
 
 /* Color pulse animation for highlighted text */
 @keyframes colorPulse {
-  0%, 100% {
+  0%,
+  100% {
     color: #7a56d6;
   }
   50% {
@@ -2512,7 +2654,7 @@ html {
 
 /* Add a gradient underline that animates */
 .animated-highlight::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -2537,7 +2679,7 @@ html {
 
 /* Add a shine effect that sweeps across the text */
 .animated-career-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -2571,7 +2713,7 @@ html {
   .animated-career-title {
     font-size: 1.8rem;
   }
-  
+
   .animated-career-section {
     margin: 50px auto 70px;
   }
@@ -2592,7 +2734,7 @@ html {
 }
 
 .twitter-embed-container::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -2px;
   background: linear-gradient(
@@ -2619,7 +2761,7 @@ html {
 
 /* Floating particles effect */
 .twitter-embed-container::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
@@ -2639,7 +2781,8 @@ html {
 }
 
 @keyframes twitterBorderPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.5;
   }
@@ -2688,7 +2831,7 @@ html {
 }
 
 .twitter-embed-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   width: 100%;
@@ -2712,7 +2855,11 @@ html {
 }
 
 .subscription-wrap {
-  background: linear-gradient(145deg, rgba(122, 86, 214, 0.15), rgba(122, 86, 214, 0.05));
+  background: linear-gradient(
+    145deg,
+    rgba(122, 86, 214, 0.15),
+    rgba(122, 86, 214, 0.05)
+  );
   border: 2px solid #7a56d6;
   border-radius: 20px;
   padding: 40px;
@@ -2723,7 +2870,7 @@ html {
 
 /* Add a subtle animated gradient background */
 .subscription-wrap::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -2821,7 +2968,7 @@ html {
 
 /* Add a shine effect on hover */
 .subscription-button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
@@ -2881,11 +3028,11 @@ html {
   .subscription-wrap {
     padding: 30px 20px;
   }
-  
+
   .subscription-heading {
     font-size: 1.3rem;
   }
-  
+
   .subscription-button {
     width: 100%;
     margin-top: 10px;
@@ -3066,19 +3213,19 @@ html {
 }
 
 .footer-link:hover {
-  color: #4CAF50; /* Green color on hover */
+  color: #4caf50; /* Green color on hover */
   transform: translateX(3px); /* Slight movement on hover */
 }
 
 /* Add underline animation on hover */
 .footer-link::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   transition: width 0.3s ease;
 }
 
@@ -3105,27 +3252,27 @@ html {
     flex-direction: column;
     gap: 50px;
   }
-  
+
   .footer-content-left {
     max-width: 100%;
   }
-  
+
   .footer-logo {
     max-width: 220px;
   }
-  
+
   .footer-brand-name {
     font-size: 2.8rem; /* Adjusted for responsive */
   }
-  
+
   .footer-content-right {
     justify-content: flex-start; /* Ensure left alignment on smaller screens */
   }
-  
+
   .footer-heading {
     font-size: 1.3rem;
   }
-  
+
   .footer-link {
     font-size: 1.1rem;
   }
@@ -3137,23 +3284,23 @@ html {
     gap: 60px;
     justify-content: flex-start; /* Changed from space-between to flex-start */
   }
-  
+
   .footer-section {
     padding: 60px 0 20px;
   }
-  
+
   .footer-paragraph {
     font-size: 1.2rem;
   }
-  
+
   .footer-brand-name {
     font-size: 2.5rem;
   }
-  
+
   .footer-heading {
     font-size: 1.25rem;
   }
-  
+
   .footer-link {
     font-size: 1.05rem;
     margin-bottom: 14px;
@@ -3167,29 +3314,29 @@ html {
     gap: 40px;
     justify-content: flex-start;
   }
-  
+
   .footer-links-column {
     min-width: 140px;
     margin-bottom: 30px;
     align-items: flex-start; /* Reinforce left alignment on mobile */
   }
-  
+
   .footer-social-grid {
     justify-content: flex-start;
   }
-  
+
   .footer-logo {
     max-width: 180px;
   }
-  
+
   .footer-brand-name {
     font-size: 2.2rem;
   }
-  
+
   .footer-heading {
     font-size: 1.2rem;
   }
-  
+
   .footer-link {
     font-size: 1rem;
     margin-bottom: 12px;
@@ -3241,8 +3388,9 @@ html {
 }
 
 /* Only prevent horizontal scrolling */
-html, body {
-  overflow-x: hidden; 
+html,
+body {
+  overflow-x: hidden;
   max-width: 100%; /* Ensure content doesn't exceed viewport width */
 }
 
@@ -3311,11 +3459,13 @@ html, body {
 
 /* Pause animations on container hover */
 .rewards-container:hover {
-  animation-play-state: paused;
+  /* Remove the animation-play-state property */
+  /* animation-play-state: paused; */
 }
 
 .rewards-container:hover .reward-item {
-  animation-play-state: paused;
+  /* Remove the animation-play-state property */
+  /* animation-play-state: paused; */
 }
 
 /* Responsive adjustments */
@@ -3364,13 +3514,17 @@ html, body {
 }
 
 .challenge-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 60%
+  );
   transform: rotate(0deg);
   animation: button-shine 4s linear infinite;
   pointer-events: none;
@@ -3406,13 +3560,12 @@ html, body {
 }
 
 @keyframes button-glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2),
-                0 0 10px rgba(0, 255, 0, 0.1);
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2), 0 0 10px rgba(0, 255, 0, 0.1);
   }
   50% {
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3),
-                0 0 20px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3), 0 0 20px rgba(0, 255, 0, 0.2);
   }
 }
 
@@ -3431,7 +3584,7 @@ html, body {
     height: 180px;
     animation-duration: 4s;
   }
-  
+
   .challenge-button {
     animation-duration: 3s;
   }
@@ -3439,7 +3592,7 @@ html, body {
 
 /* Add a container for the wave animation */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -3469,13 +3622,13 @@ body::before {
   height: 200%;
   background: radial-gradient(
     circle at center,
-    rgba(76, 175, 80, 0.3) 0%,    /* Brighter green core */
-    rgba(76, 175, 80, 0.2) 20%,   /* Middle green layer */
-    rgba(76, 175, 80, 0.1) 40%,   /* Outer green layer */
-    rgba(16, 185, 129, 0.05) 60%, /* Teal accent */
-    transparent 70%
+    rgba(76, 175, 80, 0.3) 0%,
+    /* Brighter green core */ rgba(76, 175, 80, 0.2) 20%,
+    /* Middle green layer */ rgba(76, 175, 80, 0.1) 40%,
+    /* Outer green layer */ rgba(16, 185, 129, 0.05) 60%,
+    /* Teal accent */ transparent 70%
   );
-  mix-blend-mode: screen;         /* Makes the waves more visible on dark background */
+  mix-blend-mode: screen; /* Makes the waves more visible on dark background */
   opacity: 0;
   transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
@@ -3499,7 +3652,7 @@ body::before {
 /* Add multiple waves for more dramatic effect */
 .wave::before,
 .wave::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -3516,7 +3669,7 @@ body::before {
 
 /* Add a subtle glow effect */
 .wave-background::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -3558,11 +3711,11 @@ body::before {
   animation: touchPulse 3s ease-out forwards;
   background: radial-gradient(
     circle at center,
-    rgba(0, 255, 127, 0.8) 0%,    /* Bright neon green core */
-    rgba(0, 255, 127, 0.6) 30%,   /* Mid-layer */
-    rgba(0, 255, 127, 0.4) 50%,   /* Outer layer */
-    rgba(0, 255, 127, 0.2) 70%,   /* Fade out */
-    transparent 100%
+    rgba(0, 255, 127, 0.8) 0%,
+    /* Bright neon green core */ rgba(0, 255, 127, 0.6) 30%,
+    /* Mid-layer */ rgba(0, 255, 127, 0.4) 50%,
+    /* Outer layer */ rgba(0, 255, 127, 0.2) 70%,
+    /* Fade out */ transparent 100%
   );
   mix-blend-mode: screen;
 }
@@ -3651,7 +3804,7 @@ body::before {
   justify-content: center;
   padding: 20px;
   text-align: center;
-  color: #4CAF50;
+  color: #4caf50;
   font-size: 18px;
   font-weight: 600;
   box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.2);
@@ -3664,7 +3817,7 @@ body::before {
 
 /* Add shine effect */
 .challenge-image-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -3687,7 +3840,8 @@ body::before {
 
 /* Add floating animation */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotateX(0);
   }
   50% {
@@ -3713,19 +3867,19 @@ body::before {
 
 /* Add glowing edge effect */
 .challenge-image-container::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: 8px 8px 0 0;
   border: 2px solid transparent;
-  background: linear-gradient(45deg, 
-    rgba(76, 175, 80, 0.2),
-    transparent,
-    rgba(76, 175, 80, 0.2)
-  ) border-box;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
+  background: linear-gradient(
+      45deg,
+      rgba(76, 175, 80, 0.2),
+      transparent,
+      rgba(76, 175, 80, 0.2)
+    )
+    border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
 }
@@ -3735,11 +3889,11 @@ body::before {
   .challenge-image-container {
     height: 180px;
   }
-  
+
   .challenge-box img:not(.deadline-icon) {
     height: 180px;
   }
-  
+
   .challenge-image-back {
     font-size: 16px;
   }
