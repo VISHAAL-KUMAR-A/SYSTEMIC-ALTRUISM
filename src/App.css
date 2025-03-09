@@ -2831,13 +2831,13 @@ html {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
     rgba(76, 175, 80, 0.6) 0%,
     transparent 30%,
     transparent 70%,
     rgba(76, 175, 80, 0.6) 100%
-  );
+  ); */
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -2858,11 +2858,11 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle at var(--particle-x, 50%) var(--particle-y, 50%),
     rgba(76, 175, 80, 0.3) 0%,
     transparent 50%
-  );
+  ); */
   filter: blur(20px);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -2930,12 +2930,12 @@ html {
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     transparent,
     rgba(76, 175, 80, 0.2),
     transparent
-  );
+  ); */
   background-size: 200% 100%;
   animation: shine 3s infinite linear;
   pointer-events: none;
