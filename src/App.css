@@ -269,6 +269,7 @@ useEffect(() => {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.5rem;
+  margin-left: 50px;
   /* margin: 2rem auto; */
   width: 90%;
   max-width: 1200px;
